@@ -15,9 +15,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{00EF3F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{821A7939-3CF5-42B8-9322-A901ADB00FFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossPlatformChatApp.Domain", "CrossPlatformChatApp.Domain\CrossPlatformChatApp.Domain.csproj", "{F6172E85-DBE2-4493-9E7F-89741B260FD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrossPlatformChatApp.Domain", "CrossPlatformChatApp.Domain\CrossPlatformChatApp.Domain.csproj", "{F6172E85-DBE2-4493-9E7F-89741B260FD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossPlatformChatApp.Application", "CrossPlatformChatApp.Application\CrossPlatformChatApp.Application.csproj", "{4921820D-39B0-4CC2-9B27-D28B17B52B07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrossPlatformChatApp.Application", "CrossPlatformChatApp.Application\CrossPlatformChatApp.Application.csproj", "{4921820D-39B0-4CC2-9B27-D28B17B52B07}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{00074908-BB0E-4D1A-8600-DE9A6C626AF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossPlatformChatApp.API", "CrossPlatformChatApp.API\CrossPlatformChatApp.API.csproj", "{66C2AA40-66DF-4CFF-AF81-5D650453F255}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossPlatformChatApp.Persistence", "CrossPlatformChatApp.Persistence\CrossPlatformChatApp.Persistence.csproj", "{29339D56-32A4-4E22-8338-03AA3A04C6F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,14 @@ Global
 		{4921820D-39B0-4CC2-9B27-D28B17B52B07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4921820D-39B0-4CC2-9B27-D28B17B52B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4921820D-39B0-4CC2-9B27-D28B17B52B07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66C2AA40-66DF-4CFF-AF81-5D650453F255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66C2AA40-66DF-4CFF-AF81-5D650453F255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66C2AA40-66DF-4CFF-AF81-5D650453F255}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66C2AA40-66DF-4CFF-AF81-5D650453F255}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29339D56-32A4-4E22-8338-03AA3A04C6F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29339D56-32A4-4E22-8338-03AA3A04C6F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29339D56-32A4-4E22-8338-03AA3A04C6F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29339D56-32A4-4E22-8338-03AA3A04C6F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +58,9 @@ Global
 		{821A7939-3CF5-42B8-9322-A901ADB00FFE} = {3A41532E-6DB7-471D-8B0C-474B8A2F7463}
 		{F6172E85-DBE2-4493-9E7F-89741B260FD0} = {00EF3FF5-CD34-489B-B7EF-3823DBFCE624}
 		{4921820D-39B0-4CC2-9B27-D28B17B52B07} = {3B69CCEC-A9D7-4B90-A08A-CE6B729662E8}
+		{00074908-BB0E-4D1A-8600-DE9A6C626AF3} = {3A41532E-6DB7-471D-8B0C-474B8A2F7463}
+		{66C2AA40-66DF-4CFF-AF81-5D650453F255} = {00074908-BB0E-4D1A-8600-DE9A6C626AF3}
+		{29339D56-32A4-4E22-8338-03AA3A04C6F8} = {821A7939-3CF5-42B8-9322-A901ADB00FFE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7019B0BA-1BCB-45C9-A1E0-C7B259287A4F}
