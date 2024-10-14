@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossPlatformChatApp.Domain", "CrossPlatformChatApp.Domain\CrossPlatformChatApp.Domain.csproj", "{F6172E85-DBE2-4493-9E7F-89741B260FD0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossPlatformChatApp.Application", "CrossPlatformChatApp.Application\CrossPlatformChatApp.Application.csproj", "{4921820D-39B0-4CC2-9B27-D28B17B52B07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F6172E85-DBE2-4493-9E7F-89741B260FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6172E85-DBE2-4493-9E7F-89741B260FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6172E85-DBE2-4493-9E7F-89741B260FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4921820D-39B0-4CC2-9B27-D28B17B52B07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4921820D-39B0-4CC2-9B27-D28B17B52B07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4921820D-39B0-4CC2-9B27-D28B17B52B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4921820D-39B0-4CC2-9B27-D28B17B52B07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +43,7 @@ Global
 		{00EF3FF5-CD34-489B-B7EF-3823DBFCE624} = {3A41532E-6DB7-471D-8B0C-474B8A2F7463}
 		{821A7939-3CF5-42B8-9322-A901ADB00FFE} = {3A41532E-6DB7-471D-8B0C-474B8A2F7463}
 		{F6172E85-DBE2-4493-9E7F-89741B260FD0} = {00EF3FF5-CD34-489B-B7EF-3823DBFCE624}
+		{4921820D-39B0-4CC2-9B27-D28B17B52B07} = {3B69CCEC-A9D7-4B90-A08A-CE6B729662E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7019B0BA-1BCB-45C9-A1E0-C7B259287A4F}
