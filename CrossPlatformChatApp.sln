@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3A41532E-6DB7-471D-8B0C-474B8A2F7463}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F2A9C228-2AF8-47D0-AD1D-562AA2A429A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{17712296-3D43-40C2-B09C-B1CE02DF3338}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{3B69CCEC-A9D7-4B90-A08A-CE6B729662E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{00EF3FF5-CD34-489B-B7EF-3823DBFCE624}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{821A7939-3CF5-42B8-9322-A901ADB00FFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossPlatformChatApp.Domain", "CrossPlatformChatApp.Domain\CrossPlatformChatApp.Domain.csproj", "{F6172E85-DBE2-4493-9E7F-89741B260FD0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6172E85-DBE2-4493-9E7F-89741B260FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6172E85-DBE2-4493-9E7F-89741B260FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6172E85-DBE2-4493-9E7F-89741B260FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6172E85-DBE2-4493-9E7F-89741B260FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{17712296-3D43-40C2-B09C-B1CE02DF3338} = {3A41532E-6DB7-471D-8B0C-474B8A2F7463}
+		{3B69CCEC-A9D7-4B90-A08A-CE6B729662E8} = {3A41532E-6DB7-471D-8B0C-474B8A2F7463}
+		{00EF3FF5-CD34-489B-B7EF-3823DBFCE624} = {3A41532E-6DB7-471D-8B0C-474B8A2F7463}
+		{821A7939-3CF5-42B8-9322-A901ADB00FFE} = {3A41532E-6DB7-471D-8B0C-474B8A2F7463}
+		{F6172E85-DBE2-4493-9E7F-89741B260FD0} = {00EF3FF5-CD34-489B-B7EF-3823DBFCE624}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7019B0BA-1BCB-45C9-A1E0-C7B259287A4F}
+	EndGlobalSection
+EndGlobal
