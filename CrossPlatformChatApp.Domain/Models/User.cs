@@ -15,5 +15,7 @@ namespace CrossPlatformChatApp.Domain.Models
         public string Image {  get; set; } = string.Empty;
         public List<Guid> Friends { get; set; } = [];
         public List<Guid> Chats { get; set; } = [];
+        public DateTime Created { get; set; } = DateTime.Now;
+        public DateTime Edited { get; set; }
     }
 }

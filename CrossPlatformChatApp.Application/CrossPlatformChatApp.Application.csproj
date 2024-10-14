@@ -18,4 +18,11 @@
     <ProjectReference Include="..\CrossPlatformChatApp.Domain\CrossPlatformChatApp.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Chats\" />
+    <Folder Include="Features\Messages\" />
+    <Folder Include="Features\Users\" />
+    <Folder Include="Profiles\" />
+  </ItemGroup>
+
 </Project>
