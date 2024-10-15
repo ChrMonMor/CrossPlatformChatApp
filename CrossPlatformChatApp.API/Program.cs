@@ -1,6 +1,10 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using CrossPlatformChatApp.API;
 
-app.MapGet("/", () => "Hello World!");
+var builder = WebApplication.CreateBuilder(args);
+
+var app = builder
+    .ConfigureServices()
+    .ConfigurePipline();
+
 
 app.Run();

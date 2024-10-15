@@ -1,4 +1,6 @@
 ﻿using CommunityToolkit.Maui;
+using CrossPlatformChatApp.App.ViewModels;
+using CrossPlatformChatApp.App.Views;
 using Microsoft.Extensions.Logging;
 
 namespace CrossPlatformChatApp.App {
@@ -12,6 +14,8 @@ namespace CrossPlatformChatApp.App {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+            builder.Services.AddSingleton<LoginView>();
+            builder.Services.AddSingleton<LoginViewModel>();
 
 #if DEBUG
     		builder.Logging.AddDebug();
