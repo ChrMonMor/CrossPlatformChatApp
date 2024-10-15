@@ -1,9 +1,7 @@
 ﻿using CommunityToolkit.Maui;
-using CrossPlatformChatApp.UI.Pages;
-using CrossPlatformChatApp.UI.ViewModels;
 using Microsoft.Extensions.Logging;
 
-namespace CrossPlatformChatApp.UI {
+namespace CrossPlatformChatApp.App {
     public static class MauiProgram {
         public static MauiApp CreateMauiApp() {
             var builder = MauiApp.CreateBuilder();
@@ -18,9 +16,6 @@ namespace CrossPlatformChatApp.UI {
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
-            builder.Services.AddSingleton<LoginPage>();
-            builder.Services.AddSingleton<LoginViewModel>();
 
             return builder.Build();
         }

@@ -1,12 +1,9 @@
-using CrossPlatformChatApp.UI.ViewModels;
-
 namespace CrossPlatformChatApp.UI.Pages;
 
-public partial class LoginPage : ContentPage
+public partial class LoginPage : ContentView
 {
-	public LoginPage(LoginViewModel vm)
+	public LoginPage()
 	{
 		InitializeComponent();
-        BindingContext = vm;
-    }
+	}
 }

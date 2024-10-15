@@ -1,10 +1,7 @@
-﻿using CrossPlatformChatApp.UI.Pages;
-
-namespace CrossPlatformChatApp.UI {
+﻿namespace CrossPlatformChatApp.App {
     public partial class AppShell : Shell {
         public AppShell() {
             InitializeComponent();
-
         }
     }
 }

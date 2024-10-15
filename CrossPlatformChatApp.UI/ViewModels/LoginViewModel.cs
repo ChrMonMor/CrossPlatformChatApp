@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CrossPlatformChatApp.UI.ViewModels {
-    public class LoginViewModel : ObservableObject {
+    public partial class LoginViewModel : ObservableObject {
         [ObservableProperty]
         string _test;
         public LoginViewModel() {
-            Test = "";
+            Test = "Dantast";
         }
     }
 
