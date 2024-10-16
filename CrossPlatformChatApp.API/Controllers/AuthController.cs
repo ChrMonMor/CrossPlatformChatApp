@@ -4,12 +4,12 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CrossPlatformChatApp.API.Controllers {
-    [Route("auth/[controller]")]
+    [Route("[controller]/[action]")]
     [ApiController]
-    public class LoginController : ControllerBase {
+    public class AuthController : ControllerBase {
         private readonly IMediator _mediator;
 
-        public LoginController(IMediator mediator) {
+        public AuthController(IMediator mediator) {
             _mediator = mediator;
         }
 
@@ -22,14 +22,12 @@ namespace CrossPlatformChatApp.API.Controllers {
             var response = await _mediator.Send(getUserByLoginQuery);
             return Ok(response);
         }
-
-        [HttpPost(Name = "SignUp")]
+        [HttpPost(Name = "signup")]
         [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<CreateNewUserCommand>> SignUp([FromBody] CreateNewUserHandler getUserByLoginQuery) {
-            var response = await _mediator.Send(getUserByLoginQuery);
+        public async Task<ActionResult<CreateNewUserCommand>> SignUp([FromBody] CreateNewUserHandler createNewUserHandler) {
+            var response = await _mediator.Send(createNewUserHandler);
             return Ok(response);
         }
 
