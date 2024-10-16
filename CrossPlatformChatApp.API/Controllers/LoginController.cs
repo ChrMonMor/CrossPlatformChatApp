@@ -1,9 +1,10 @@
-﻿using CrossPlatformChatApp.Application.Features.Users.Queries.GetUserByLogin;
+﻿using CrossPlatformChatApp.Application.Features.Users.Commands.CreateNewUserCommand;
+using CrossPlatformChatApp.Application.Features.Users.Queries.GetUserByLogin;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CrossPlatformChatApp.API.Controllers {
-    [Route("api/[controller]")]
+    [Route("auth/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase {
         private readonly IMediator _mediator;
@@ -12,7 +13,7 @@ namespace CrossPlatformChatApp.API.Controllers {
             _mediator = mediator;
         }
 
-        [HttpPost(Name = "Login")]
+        [HttpPost(Name = "login")]
         [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -21,6 +22,17 @@ namespace CrossPlatformChatApp.API.Controllers {
             var response = await _mediator.Send(getUserByLoginQuery);
             return Ok(response);
         }
+
+        [HttpPost(Name = "SignUp")]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<CreateNewUserCommand>> SignUp([FromBody] CreateNewUserHandler getUserByLoginQuery) {
+            var response = await _mediator.Send(getUserByLoginQuery);
+            return Ok(response);
+        }
+
 
     }
 }

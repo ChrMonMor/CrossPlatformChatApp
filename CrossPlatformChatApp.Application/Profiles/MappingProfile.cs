@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CrossPlatformChatApp.Application.Features.Users.Commands.CreateNewUserCommand;
 using CrossPlatformChatApp.Application.Features.Users.Queries.GetUserByLogin;
 using CrossPlatformChatApp.Domain.Models;
 using System;
@@ -11,6 +12,7 @@ namespace CrossPlatformChatApp.Application.Profiles {
     public class MappingProfile : Profile{
         public MappingProfile() { 
             CreateMap<User, UserByLoginVm>().ReverseMap();
+            CreateMap<User, CreateNewUserCommand>().ReverseMap();
         }
     }
 }

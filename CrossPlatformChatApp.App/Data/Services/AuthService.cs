@@ -23,7 +23,7 @@ namespace CrossPlatformChatApp.App.Data.Services {
             handler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
             _httpClient = new HttpClient(handler);
             //_url = DeviceInfo.Platform == DevicePlatform.Android ? "http://10.0.2.2:5163" : "http://localhost:5163";
-            _url = "https://10.130.54.72:4433";
+            _url = "https://localhost:7018/";
 
             _jsonSerializerOptions = new JsonSerializerOptions {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
@@ -41,7 +41,7 @@ namespace CrossPlatformChatApp.App.Data.Services {
                 var request = new HttpRequestMessage(HttpMethod.Post, "authenticate") {
                     Content = new StringContent(serializedObject, Encoding.UTF8, "application/json")
                 };
-                HttpResponseMessage response = await _httpClient.PostAsync($"{_url}/auth/login", request.Content);
+                HttpResponseMessage response = await _httpClient.PostAsync($"{_url}/auth/Login", request.Content);
                 if (response.IsSuccessStatusCode) {
                     var content = await response.Content.ReadAsStringAsync();
                     UserDto user = JsonConvert.DeserializeObject<UserDto>(content);

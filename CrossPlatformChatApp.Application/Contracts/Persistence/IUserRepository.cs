@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformChatApp.Application.Contracts.Persistence {
     public interface IUserRepository : IAsyncRepository<User> {
-        Task<User> LoginAsync(string email, string password);
+        Task<User?> LoginAsync(string email, string password);
+        Task<User?> GetUserByEmail(string email);
     }
 }

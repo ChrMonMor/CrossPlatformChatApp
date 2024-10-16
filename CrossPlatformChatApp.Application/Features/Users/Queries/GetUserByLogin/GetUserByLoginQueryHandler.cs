@@ -21,9 +21,9 @@ namespace CrossPlatformChatApp.Application.Features.Users.Queries.GetUserByLogin
 
             if (validatorResult.Errors.Count() > 0) { 
                 getUserByLoginResponse.Success = false;
-                getUserByLoginResponse.Errors = new List<string>();
+                getUserByLoginResponse.ValidationErrors = new List<string>();
                 foreach (var error in validatorResult.Errors) {
-                    getUserByLoginResponse.Errors.Add(error.ErrorMessage);
+                    getUserByLoginResponse.ValidationErrors.Add(error.ErrorMessage);
                 }
             }
 

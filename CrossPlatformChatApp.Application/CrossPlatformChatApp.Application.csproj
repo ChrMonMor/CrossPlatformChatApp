@@ -23,7 +23,6 @@
     <Folder Include="Features\Chats\Queries\" />
     <Folder Include="Features\Messages\Commands\" />
     <Folder Include="Features\Messages\Queries\" />
-    <Folder Include="Features\Users\Commands\" />
   </ItemGroup>
 
 </Project>

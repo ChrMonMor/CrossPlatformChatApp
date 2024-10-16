@@ -1,5 +1,6 @@
 ﻿using CrossPlatformChatApp.Persistence;
 using CrossPlatformChatApp.Application;
+using CrossPlatformChatApp.API.Middleware;
 
 namespace CrossPlatformChatApp.API {
     public static class StartupExtentions {
@@ -32,6 +33,7 @@ namespace CrossPlatformChatApp.API {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseCustomMiddlewareExceptionHandler();
             app.UseHttpsRedirection();
             app.MapControllers();
             return app;
