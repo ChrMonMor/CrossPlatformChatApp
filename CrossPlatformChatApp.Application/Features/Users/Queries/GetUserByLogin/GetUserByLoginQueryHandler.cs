@@ -18,24 +18,35 @@ namespace CrossPlatformChatApp.Application.Features.Users.Queries.GetUserByLogin
         }
 
         public async Task<GetUserByLoginResponse> Handle(GetUserByLoginQuery request, CancellationToken cancellationToken) {
+
             var getUserByLoginResponse = new GetUserByLoginResponse();
+
             var validator = new GetUserByLoginValidator(_userRepository);
 
             var validatorResult = await validator.ValidateAsync(request, cancellationToken);
 
             if (validatorResult.Errors.Count() > 0) {
+
+                _logger.LogDebug($"Validation failed: {validatorResult.Errors[0].ErrorMessage}");
+
                 throw new ValidationException(validatorResult);
             }
             try {
                 var getUserByLogin = await _userRepository.LoginAsync(request.Email, request.Password);
+
                 if (getUserByLogin is null) {
+                    _logger.LogInformation($"User ({request.Email}) provided the wrong Email or Password");
                     throw new NotFoundException(nameof(User), request.Email);
                 }
 
                 var userByLogin = _mapper.Map<UserByLoginVm>(getUserByLogin);
+
                 getUserByLoginResponse.UserVm = userByLogin;
+
             } catch (Exception ex) {
+
                 _logger.LogError($"Attempt to login into account {request.Email} failed do to error with database - {ex.Message}");
+
             }
 
             return getUserByLoginResponse;
