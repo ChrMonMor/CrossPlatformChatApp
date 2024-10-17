@@ -21,8 +21,10 @@ namespace CrossPlatformChatApp.App {
 
             builder.Services.AddSingleton<LoginView>();
             builder.Services.AddSingleton<LoginViewModel>();
-            builder.Services.AddSingleton<UserView>();
-            builder.Services.AddSingleton<UserViewModel>();
+            builder.Services.AddTransient<UserPage>();
+            builder.Services.AddTransient<UserViewModel>();
+            builder.Services.AddTransient<SignUpPage>();
+            builder.Services.AddTransient<SignUpViewModel>();
 
 #if DEBUG
             builder.Logging.AddDebug();

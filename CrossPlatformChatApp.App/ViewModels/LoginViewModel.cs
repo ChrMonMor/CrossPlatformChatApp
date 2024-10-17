@@ -3,13 +3,7 @@ using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CrossPlatformChatApp.App.Data.Interfaces;
-using CrossPlatformChatApp.App.Models;
 using CrossPlatformChatApp.App.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CrossPlatformChatApp.App.ViewModels {
     public partial class LoginViewModel : ObservableObject {
@@ -30,7 +24,7 @@ namespace CrossPlatformChatApp.App.ViewModels {
         [RelayCommand]
         public async Task Login() {
             Navigating = true;
-            UserDto user = await _authService.Login(Email, Password);
+            var user = await _authService.Login(Email, Password);
 
             if (user == null) {
                 CancellationTokenSource cancellationTokenSource = new();
@@ -40,8 +34,14 @@ namespace CrossPlatformChatApp.App.ViewModels {
                 Navigating = false;
                 return;
             }
-            await Shell.Current.GoToAsync($"{nameof(UserView)}?Username={user.Name}");
+            await Shell.Current.GoToAsync($"{nameof(UserPage)}?Username={user.Name}");
                 
+            Navigating = false;
+        }
+        [RelayCommand]
+        public async Task SignUp() {
+            Navigating = true;
+            await Shell.Current.GoToAsync($"{nameof(SignUpPage)}?Email={Email}");
             Navigating = false;
         }
     }

@@ -6,6 +6,8 @@ namespace CrossPlatformChatApp.App {
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(LoginView), typeof(LoginView));
+            Routing.RegisterRoute(nameof(SignUpPage), typeof(SignUpPage));
+            Routing.RegisterRoute(nameof(UserPage), typeof(UserPage));
         }
     }
 }

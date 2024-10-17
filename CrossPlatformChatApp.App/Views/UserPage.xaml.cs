@@ -2,9 +2,9 @@ using CrossPlatformChatApp.App.ViewModels;
 
 namespace CrossPlatformChatApp.App.Views;
 
-public partial class UserView : ContentView
+public partial class UserPage : ContentPage
 {
-	public UserView(UserViewModel vm)
+	public UserPage(UserViewModel vm)
 	{
 		InitializeComponent();
 		BindingContext = vm;

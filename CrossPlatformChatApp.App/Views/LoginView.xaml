@@ -38,7 +38,7 @@
                     Text="Login" TextColor="{StaticResource SecondaryDarkText}" FontFamily="OpenSansSemibold" Command="{Binding LoginCommand}" />
             <Label FontFamily="OpenSansRegular" TextColor="{StaticResource SecondaryDarkText}" HorizontalOptions="Center" FontSize="16" Text="Or" />
             <Button Margin="0,15" BackgroundColor="{StaticResource Secondary}"
-                    Text="Sign Up" TextColor="{StaticResource SecondaryDarkText}" FontFamily="OpenSansSemibold" Command="{Binding LoginCommand}" />
+                    Text="Sign Up" TextColor="{StaticResource SecondaryDarkText}" FontFamily="OpenSansSemibold" Command="{Binding SignUpCommand}" />
             <ActivityIndicator IsRunning="{Binding Navigating}"
                                HorizontalOptions="Center"                           
                                VerticalOptions="Center"
