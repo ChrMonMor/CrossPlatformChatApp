@@ -16,5 +16,9 @@ namespace CrossPlatformChatApp.Application.Features.Users.Commands.CreateNewUser
         public List<Guid> Chats { get; set; } = [];
         public DateTime Created { get; set; } = DateTime.Now;
         public DateTime Edited { get; set; } = DateTime.Now;
+
+        public override string ToString() {
+            return $"Id: {Id}, Name: {Name}, Email: {Email}, Pass: {Password}, Img: {Image}, Friends: {Friends}, Chats: {Chats}, Created: {Created}, Edited: {Edited}";
+        }
     }
 }

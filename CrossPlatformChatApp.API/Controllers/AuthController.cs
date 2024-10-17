@@ -13,7 +13,7 @@ namespace CrossPlatformChatApp.API.Controllers {
             _mediator = mediator;
         }
 
-        [HttpPost(Name = "login")]
+        [HttpPost(Name = "Login")]
         [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -22,7 +22,7 @@ namespace CrossPlatformChatApp.API.Controllers {
             var response = await _mediator.Send(getUserByLoginQuery);
             return Ok(response);
         }
-        [HttpPost(Name = "signup")]
+        [HttpPost(Name = "SignUp")]
         [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

@@ -1,16 +1,20 @@
 ﻿using AutoMapper;
 using CrossPlatformChatApp.Application.Contracts.Persistence;
+using CrossPlatformChatApp.Application.Exceptions;
 using CrossPlatformChatApp.Domain.Models;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace CrossPlatformChatApp.Application.Features.Users.Queries.GetUserByLogin {
     public class GetUserByLoginQueryHandler : IRequestHandler<GetUserByLoginQuery, GetUserByLoginResponse> {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
+        private readonly ILogger<GetUserByLoginQueryHandler> _logger;
 
-        public GetUserByLoginQueryHandler(IUserRepository userRepository, IMapper mapper) {
+        public GetUserByLoginQueryHandler(IUserRepository userRepository, IMapper mapper, ILogger<GetUserByLoginQueryHandler> logger) {
             _userRepository = userRepository;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<GetUserByLoginResponse> Handle(GetUserByLoginQuery request, CancellationToken cancellationToken) {
@@ -19,17 +23,20 @@ namespace CrossPlatformChatApp.Application.Features.Users.Queries.GetUserByLogin
 
             var validatorResult = await validator.ValidateAsync(request, cancellationToken);
 
-            if (validatorResult.Errors.Count() > 0) { 
-                getUserByLoginResponse.Success = false;
-                getUserByLoginResponse.ValidationErrors = new List<string>();
-                foreach (var error in validatorResult.Errors) {
-                    getUserByLoginResponse.ValidationErrors.Add(error.ErrorMessage);
-                }
+            if (validatorResult.Errors.Count() > 0) {
+                throw new ValidationException(validatorResult);
             }
+            try {
+                var getUserByLogin = await _userRepository.LoginAsync(request.Email, request.Password);
+                if (getUserByLogin is null) {
+                    throw new NotFoundException(nameof(User), request.Email);
+                }
 
-            var getUserByLogin = await _userRepository.LoginAsync(request.Email, request.Email);
-            var userByLogin = _mapper.Map<UserByLoginVm>(getUserByLogin);
-            getUserByLoginResponse.UserVm = userByLogin;
+                var userByLogin = _mapper.Map<UserByLoginVm>(getUserByLogin);
+                getUserByLoginResponse.UserVm = userByLogin;
+            } catch (Exception ex) {
+                _logger.LogError($"Attempt to login into account {request.Email} failed do to error with database - {ex.Message}");
+            }
 
             return getUserByLoginResponse;
         }
