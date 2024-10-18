@@ -45,7 +45,7 @@ namespace CrossPlatformChatApp.Application.Features.Users.Queries.GetUserByLogin
 
             } catch (Exception ex) {
 
-                _logger.LogError($"Attempt to login into account {request.Email} failed do to error with database - {ex.Message}");
+                _logger.LogError($"Attempt to login into account ({request.Email}) failed do to error with database - {ex.Message}");
 
             }
 

@@ -1,6 +1,10 @@
 ﻿using CrossPlatformChatApp.Persistence;
 using CrossPlatformChatApp.Application;
 using CrossPlatformChatApp.API.Middleware;
+using CrossPlatformChatApp.Identity;
+using CrossPlatformChatApp.Identity.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
 
 namespace CrossPlatformChatApp.API {
     public static class StartupExtentions {
@@ -8,6 +12,7 @@ namespace CrossPlatformChatApp.API {
             // service registrations here!
             builder.Services.AddApplicationServices();
             builder.Services.AddPersistenceServices(builder.Configuration);
+            builder.Services.AddIdentityServices(builder.Configuration);
 
             builder.Services.AddControllers();
 
@@ -22,12 +27,23 @@ namespace CrossPlatformChatApp.API {
                 .AllowCredentials()
                 ));
 
+            builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             return builder.Build();
         }
         public static WebApplication ConfigurePipline(this WebApplication app) {
             // middelware here!
+
+            app.MapIdentityApi<ApplicationUser>();
+
+            // Needed for the base Identity, since there is no logout endpoint
+            app.MapPost("/Logout", async (ClaimsPrincipal user, 
+                SignInManager<ApplicationUser> signInManager) => {
+                    await signInManager.SignOutAsync();
+                    return TypedResults.Ok();
+            });
+
             app.UseCors("open");
             if (app.Environment.IsDevelopment()) {
                 app.UseSwagger();

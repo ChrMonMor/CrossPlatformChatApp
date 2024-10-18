@@ -41,7 +41,7 @@ namespace CrossPlatformChatApp.App.Data.Services {
                 var request = new HttpRequestMessage(HttpMethod.Post, "authenticate") {
                     Content = new StringContent(serializedObject, Encoding.UTF8, "application/json")
                 };
-                HttpResponseMessage response = await _httpClient.PostAsync($"{_url}/auth/Login", request.Content);
+                HttpResponseMessage response = await _httpClient.PostAsync($"{_url}/Auth/Login", request.Content);
                 if (response.IsSuccessStatusCode) {
                     var content = await response.Content.ReadAsStringAsync();
                     UserDto user = JsonConvert.DeserializeObject<UserDto>(content);

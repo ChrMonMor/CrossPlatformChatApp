@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CrossPlatformChatApp.Application\CrossPlatformChatApp.Application.csproj" />
+    <ProjectReference Include="..\CrossPlatformChatApp.Identity\CrossPlatformChatApp.Identity.csproj" />
     <ProjectReference Include="..\CrossPlatformChatApp.Persistence\CrossPlatformChatApp.Persistence.csproj" />
   </ItemGroup>
 
