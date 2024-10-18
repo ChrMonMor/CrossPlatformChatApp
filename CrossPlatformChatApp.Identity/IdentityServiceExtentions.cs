@@ -12,7 +12,7 @@ namespace CrossPlatformChatApp.Identity {
             services.AddAuthorizationBuilder();
 
             services.AddDbContext<CrossPlatformChatAppIdentityDbContext>(options => 
-            options.UseMongoDB(new MongoClient(configuration.GetConnectionString("MongoDbConnection")), configuration.GetSection("DatabaseName")["MongoDB"]));
+            options.UseMongoDB(new MongoClient(configuration.GetConnectionString("MongoDbConnection")), configuration.GetSection("DatabaseName")["Identity"]));
 
             services.AddIdentityCore<ApplicationUser>()
                 .AddEntityFrameworkStores<CrossPlatformChatAppIdentityDbContext>()
