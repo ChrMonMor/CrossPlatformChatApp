@@ -26,8 +26,8 @@ namespace CrossPlatformChatApp.API.Controllers {
         [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<CreateNewUserCommand>> SignUp([FromBody] CreateNewUserHandler createNewUserHandler) {
-            var response = await _mediator.Send(createNewUserHandler);
+        public async Task<ActionResult<CreateNewUserCommand>> SignUp([FromBody] CreateNewUserCommand createNewUserCommand) {
+            var response = await _mediator.Send(createNewUserCommand);
             return Ok(response);
         }
 

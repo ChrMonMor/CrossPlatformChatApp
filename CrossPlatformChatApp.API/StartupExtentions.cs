@@ -12,7 +12,7 @@ namespace CrossPlatformChatApp.API {
             // service registrations here!
             builder.Services.AddApplicationServices();
             builder.Services.AddPersistenceServices(builder.Configuration);
-            builder.Services.AddIdentityServices(builder.Configuration);
+            //builder.Services.AddIdentityServices(builder.Configuration);
 
             builder.Services.AddControllers();
 
@@ -35,15 +35,15 @@ namespace CrossPlatformChatApp.API {
         public static WebApplication ConfigurePipline(this WebApplication app) {
             // middelware here!
 
-            app.MapIdentityApi<ApplicationUser>();
+            //app.MapIdentityApi<ApplicationUser>();
 
             // Needed for the base Identity, since there is no logout endpoint
-            app.MapPost("/Logout", async (ClaimsPrincipal user, 
+            /*app.MapPost("/Logout", async (ClaimsPrincipal user, 
                 SignInManager<ApplicationUser> signInManager) => {
                     await signInManager.SignOutAsync();
                     return TypedResults.Ok();
-            });
-
+            });*/
+            
             app.UseCors("open");
             if (app.Environment.IsDevelopment()) {
                 app.UseSwagger();

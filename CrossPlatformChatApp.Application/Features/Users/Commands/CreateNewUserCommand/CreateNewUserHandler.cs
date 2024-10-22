@@ -30,14 +30,17 @@ namespace CrossPlatformChatApp.Application.Features.Users.Commands.CreateNewUser
                 throw new ValidationException(validatorResult);
 
             } else {
-                var newUser = _mapper.Map<User>(request);
+
+                var newUser = await _userRepository.RegisterUser(request.Email, request.Password, request.Name, request.ImageAdress);
 
                 try {
-                    newUser = await _userRepository.AddAsync(newUser);
-                    createNewUserResponse.NewUser = _mapper.Map<CreateNewUserCommand>(newUser);
+
+                    createNewUserResponse.NewUser = _mapper.Map<CreateNewUserCommandVm>(newUser);
 
                 } catch (Exception ex) {
+
                     _logger.LogError($"User {request.Email} did not get registered- {request.ToString()} - {ex.Message}");
+
                 }
             }
             return createNewUserResponse;
