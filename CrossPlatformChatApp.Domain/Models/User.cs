@@ -13,7 +13,7 @@ namespace CrossPlatformChatApp.Domain.Models
         public string Email { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
         public string Image {  get; set; } = string.Empty;
-        public bool IsConfirm { get; set; } = false;
+        public bool IsConfirmed { get; set; } = false;
         public List<Guid> Friends { get; set; } = [];
         public List<Guid> Chats { get; set; } = [];
         public DateTime Created { get; set; } = DateTime.Now;

@@ -29,7 +29,7 @@ namespace CrossPlatformChatApp.Application.Features.Users.Commands.CreateNewUser
 
                 try {
 
-                    createNewUserResponse.NewUser = _mapper.Map<CreateNewUserCommandVm>(newUser);
+                    createNewUserResponse.Data = _mapper.Map<CreateNewUserCommandVm>(newUser);
 
                 } catch (Exception ex) {
 

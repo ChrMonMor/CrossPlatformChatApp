@@ -37,7 +37,7 @@ namespace CrossPlatformChatApp.Application.Features.Users.Queries.GetUserByLogin
 
                 var userByLogin = _mapper.Map<UserByLoginVm>(getUserByLogin);
 
-                getUserByLoginResponse.UserVm = userByLogin;
+                getUserByLoginResponse.Data = userByLogin;
 
             } catch (Exception ex) {
 

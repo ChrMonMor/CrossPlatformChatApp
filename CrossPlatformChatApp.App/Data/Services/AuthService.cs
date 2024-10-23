@@ -38,19 +38,19 @@ namespace CrossPlatformChatApp.App.Data.Services {
 
             try {
                 var serializedObject = JsonConvert.SerializeObject(new { email, password });
-                var request = new HttpRequestMessage(HttpMethod.Post, "authenticate") {
+                var request = new HttpRequestMessage() {
                     Content = new StringContent(serializedObject, Encoding.UTF8, "application/json")
                 };
-                HttpResponseMessage response = await _httpClient.PostAsync($"{_url}/Auth/Login", request.Content);
+                HttpResponseMessage response = await _httpClient.PostAsync($"{_url}Auth/Login", request.Content);
                 if (response.IsSuccessStatusCode) {
                     var content = await response.Content.ReadAsStringAsync();
-                    UserDto user = JsonConvert.DeserializeObject<UserDto>(content);
+                    ResponseBaseDto<UserDto> user = JsonConvert.DeserializeObject<ResponseBaseDto<UserDto>>(content);
 
-                    dynamic data = JObject.Parse(content);
-                    string token = data["token"];
-                    await SecureStorage.Default.SetAsync("bearerToken", token);
+                    //dynamic data = JObject.Parse(content);
+                    //string token = data["token"];
+                    //await SecureStorage.Default.SetAsync("bearerToken", token);
 
-                    return user;
+                    return user.Data;
                 }
                 return null;
             } catch (Exception ex) {

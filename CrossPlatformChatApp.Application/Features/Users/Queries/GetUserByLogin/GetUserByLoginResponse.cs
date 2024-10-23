@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformChatApp.Application.Features.Users.Queries.GetUserByLogin {
     public class GetUserByLoginResponse : BaseResponse {
-        public UserByLoginVm? UserVm { get; set; }
+        public UserByLoginVm? Data { get; set; }
 
         public GetUserByLoginResponse() : base() {
         }

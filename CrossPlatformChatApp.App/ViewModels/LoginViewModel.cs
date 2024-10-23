@@ -3,6 +3,7 @@ using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CrossPlatformChatApp.App.Data.Interfaces;
+using CrossPlatformChatApp.App.Models;
 using CrossPlatformChatApp.App.Views;
 
 namespace CrossPlatformChatApp.App.ViewModels {
@@ -24,7 +25,7 @@ namespace CrossPlatformChatApp.App.ViewModels {
         [RelayCommand]
         public async Task Login() {
             Navigating = true;
-            var user = await _authService.Login(Email, Password);
+            UserDto user = await _authService.Login(Email, Password);
 
             if (user == null) {
                 CancellationTokenSource cancellationTokenSource = new();
