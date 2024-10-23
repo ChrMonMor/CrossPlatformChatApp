@@ -2,11 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace CrossPlatformChatApp.Persistence.Repositories {
-    public class BaseRepository<T> : IAsyncRepository<T> where T : class {
-        protected readonly CrossPlatformChatAppDbContext _dbContext;
-        public BaseRepository(CrossPlatformChatAppDbContext dbContext) {
-            _dbContext = dbContext;
-        }
+    public class BaseRepository<T>(CrossPlatformChatAppDbContext dbContext) : IAsyncRepository<T> where T : class {
+        protected readonly CrossPlatformChatAppDbContext _dbContext = dbContext;
 
         public async Task<T> AddAsync(T entity) {
             await _dbContext.Set<T>().AddAsync(entity);

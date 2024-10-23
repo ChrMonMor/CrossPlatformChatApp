@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformChatApp.Application.Features.Users.Commands.CreateNewUserCommand {
     public class CreateNewUserCommand : IRequest<CreateNewUserCommandResponse> {
-        public string Email { get; set; } 
-        public string Password { get; set; } 
-        public string Name { get; set; }
-        public string ImageAdress { get; set; }
+        public required string Email { get; set; } 
+        public required string Password { get; set; } 
+        public string? Name { get; set; }
+        public string? ImageAdress { get; set; }
     }
 }

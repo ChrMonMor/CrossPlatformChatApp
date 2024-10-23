@@ -34,8 +34,8 @@ namespace CrossPlatformChatApp.Persistence.Repositories {
         }
 
         public async Task<User> RegisterUser(string email, string password, string? name = null, string? image = null) {
-            if (name is null) { name = email; }
-            if (image is null) { image = "none"; }
+            name ??= email;
+            image ??= "none";
             var entity = new User() { Name = name, Email = email, Password = password, Image = image};
             await _dbContext.Set<User>().AddAsync(entity);
             await _dbContext.SaveChangesAsync();

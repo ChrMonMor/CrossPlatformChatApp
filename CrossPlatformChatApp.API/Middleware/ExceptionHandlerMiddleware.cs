@@ -3,12 +3,8 @@ using System.Net;
 using System.Text.Json;
 
 namespace CrossPlatformChatApp.API.Middleware {
-    public class ExceptionHandlerMiddleware {
-        private readonly RequestDelegate _next;
-
-        public ExceptionHandlerMiddleware(RequestDelegate next) {
-            _next = next;
-        }
+    public class ExceptionHandlerMiddleware(RequestDelegate next) {
+        private readonly RequestDelegate _next = next;
 
         public async Task Invoke(HttpContext context) {
             try {
@@ -18,7 +14,7 @@ namespace CrossPlatformChatApp.API.Middleware {
             }
         }
 
-        private Task ConvertException(HttpContext context, Exception ex) {
+        private static Task ConvertException(HttpContext context, Exception ex) {
             HttpStatusCode httpStatusCode = HttpStatusCode.InternalServerError;
             context.Response.ContentType = "application/json";
             var result = string.Empty;

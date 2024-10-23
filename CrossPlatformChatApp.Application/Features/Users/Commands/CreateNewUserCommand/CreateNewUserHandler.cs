@@ -6,26 +6,20 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 
 namespace CrossPlatformChatApp.Application.Features.Users.Commands.CreateNewUserCommand {
-    public class CreateNewUserHandler : IRequestHandler<CreateNewUserCommand, CreateNewUserCommandResponse> {
+    public class CreateNewUserHandler(IUserRepository userRepository, IMapper mapper, ILogger<CreateNewUserHandler> logger) : IRequestHandler<CreateNewUserCommand, CreateNewUserCommandResponse> {
 
-        private readonly IUserRepository _userRepository;
-        private readonly IMapper _mapper;
-        private readonly ILogger<CreateNewUserHandler> _logger;
-
-        public CreateNewUserHandler(IUserRepository userRepository, IMapper mapper, ILogger<CreateNewUserHandler> logger) {
-            _userRepository = userRepository;
-            _mapper = mapper;
-            _logger = logger;
-        }
+        private readonly IUserRepository _userRepository = userRepository;
+        private readonly IMapper _mapper = mapper;
+        private readonly ILogger<CreateNewUserHandler> _logger = logger;
 
         public async Task<CreateNewUserCommandResponse> Handle(CreateNewUserCommand request, CancellationToken cancellationToken) {
 
             var createNewUserResponse = new CreateNewUserCommandResponse();
             var validator = new CreateNewUserValidator(_userRepository);
 
-            var validatorResult = await validator.ValidateAsync(request);
+            var validatorResult = await validator.ValidateAsync(request, cancellationToken);
 
-            if (validatorResult.Errors.Count() > 0) {
+            if (validatorResult.Errors.Count > 0) {
 
                 throw new ValidationException(validatorResult);
 
@@ -39,7 +33,8 @@ namespace CrossPlatformChatApp.Application.Features.Users.Commands.CreateNewUser
 
                 } catch (Exception ex) {
 
-                    _logger.LogError($"User {request.Email} did not get registered- {request.ToString()} - {ex.Message}");
+                    string message = $"User {request.Email} did not get registered- {request} - {ex.Message}";
+                    _logger.LogError(message);
 
                 }
             }

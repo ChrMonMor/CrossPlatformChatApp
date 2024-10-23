@@ -6,16 +6,10 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 
 namespace CrossPlatformChatApp.Application.Features.Users.Queries.GetUserByLogin {
-    public class GetUserByLoginQueryHandler : IRequestHandler<GetUserByLoginQuery, GetUserByLoginResponse> {
-        private readonly IUserRepository _userRepository;
-        private readonly IMapper _mapper;
-        private readonly ILogger<GetUserByLoginQueryHandler> _logger;
-
-        public GetUserByLoginQueryHandler(IUserRepository userRepository, IMapper mapper, ILogger<GetUserByLoginQueryHandler> logger) {
-            _userRepository = userRepository;
-            _mapper = mapper;
-            _logger = logger;
-        }
+    public class GetUserByLoginQueryHandler(IUserRepository userRepository, IMapper mapper, ILogger<GetUserByLoginQueryHandler> logger) : IRequestHandler<GetUserByLoginQuery, GetUserByLoginResponse> {
+        private readonly IUserRepository _userRepository = userRepository;
+        private readonly IMapper _mapper = mapper;
+        private readonly ILogger<GetUserByLoginQueryHandler> _logger = logger;
 
         public async Task<GetUserByLoginResponse> Handle(GetUserByLoginQuery request, CancellationToken cancellationToken) {
 
@@ -25,9 +19,10 @@ namespace CrossPlatformChatApp.Application.Features.Users.Queries.GetUserByLogin
 
             var validatorResult = await validator.ValidateAsync(request, cancellationToken);
 
-            if (validatorResult.Errors.Count() > 0) {
+            if (validatorResult.Errors.Count > 0) {
 
-                _logger.LogDebug($"Validation failed: {validatorResult.Errors[0].ErrorMessage}");
+                string message = $"Validation failed: {validatorResult.Errors[0].ErrorMessage}";
+                _logger.LogDebug(message);
 
                 throw new ValidationException(validatorResult);
             }
@@ -35,7 +30,8 @@ namespace CrossPlatformChatApp.Application.Features.Users.Queries.GetUserByLogin
                 var getUserByLogin = await _userRepository.LoginAsync(request.Email, request.Password);
 
                 if (getUserByLogin is null) {
-                    _logger.LogInformation($"User ({request.Email}) provided the wrong Email or Password");
+                    string message = $"User ({request.Email}) provided the wrong Email or Password";
+                    _logger.LogInformation(message);
                     throw new NotFoundException(nameof(User), request.Email);
                 }
 
@@ -45,7 +41,8 @@ namespace CrossPlatformChatApp.Application.Features.Users.Queries.GetUserByLogin
 
             } catch (Exception ex) {
 
-                _logger.LogError($"Attempt to login into account ({request.Email}) failed do to error with database - {ex.Message}");
+                string message = $"Attempt to login into account ({request.Email}) failed do to error with database - {ex.Message}";
+                _logger.LogError(message);
 
             }
 

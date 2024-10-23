@@ -3,9 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MongoDB.EntityFrameworkCore.Extensions;
 
 namespace CrossPlatformChatApp.Persistence {
-    public class CrossPlatformChatAppDbContext : DbContext {
-        public CrossPlatformChatAppDbContext(DbContextOptions options) : base(options) {
-        }
+    public class CrossPlatformChatAppDbContext(DbContextOptions options) : DbContext(options) {
         public DbSet<User> Users { get; set; }
         public DbSet<Chat> Chats { get; set; }
 

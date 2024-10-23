@@ -10,6 +10,5 @@ namespace CrossPlatformChatApp.Application.Contracts.Persistence {
         Task<List<Message>> GetMessagesAsync(Guid chat, int limit = 25);
         Task<List<Message>> AddMessage(Guid chat, Message message);
         Task<List<Message>> RemoveMessage(Guid chat, Guid message);
-        Task
     }
 }
