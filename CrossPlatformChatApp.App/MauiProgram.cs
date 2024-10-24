@@ -25,6 +25,12 @@ namespace CrossPlatformChatApp.App {
             builder.Services.AddTransient<UserViewModel>();
             builder.Services.AddTransient<SignUpPage>();
             builder.Services.AddTransient<SignUpViewModel>();
+            builder.Services.AddTransient<ForgotEmailPage>();
+            builder.Services.AddTransient<ForgotEmailViewModel>();
+            builder.Services.AddTransient<ForgotPasswordPage>();
+            builder.Services.AddTransient<ForgotPasswordViewModel>();
+            builder.Services.AddTransient<ChatPage>();
+            builder.Services.AddTransient<ChatViewModel>();
 
 #if DEBUG
             builder.Logging.AddDebug();
