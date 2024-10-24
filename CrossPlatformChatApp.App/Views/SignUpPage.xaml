@@ -5,9 +5,18 @@
              xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              Title="SignUpPage">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Frame CornerRadius="90">
+            <Image Source="{Binding ImageSource}"/>
+        </Frame>
+        <Label Text="Email*"/>
+        <Entry Text="{Binding Email}"/>
+        <Label Text="Password*"/>
+        <Entry Text="{Binding Password}"
+               IsPassword="True"/>
+        <Label Text="Repeat Password*"/>
+        <Entry Text="{Binding RepeatPassword}"
+               IsPassword="True"/>
+        <Button Text="Submit"
+                Command="{Binding SignUpCommand}"/>
     </VerticalStackLayout>
 </ContentPage>

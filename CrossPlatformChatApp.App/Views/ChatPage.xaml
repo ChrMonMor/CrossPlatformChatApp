@@ -4,10 +4,12 @@
              x:Class="CrossPlatformChatApp.App.Views.ChatPage"
              xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              Title="ChatPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid RowDefinitions="auto, * ,auto">
+        <Frame Grid.Row="0">
+            <Label Text="{Binding ChatName}"/>
+        </Frame>
+        <ScrollView>
+            
+        </ScrollView>
+    </Grid>
 </ContentPage>

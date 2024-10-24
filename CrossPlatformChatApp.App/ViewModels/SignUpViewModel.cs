@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using CrossPlatformChatApp.App.Data.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,21 @@ namespace CrossPlatformChatApp.App.ViewModels {
 
         [ObservableProperty]
         string _email;
+        [ObservableProperty]
+        string _name;
+        [ObservableProperty]
+        string _password;
+        [ObservableProperty]
+        string _repeatPassword;
+
+        public SignUpViewModel() {
+
+        }
+
+        [RelayCommand]
+        public async Task SignUp() {
+
+        }
 
     }
 }
