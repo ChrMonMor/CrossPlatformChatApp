@@ -45,5 +45,11 @@ namespace CrossPlatformChatApp.App.ViewModels {
             await Shell.Current.GoToAsync($"{nameof(SignUpPage)}?Email={Email}");
             Navigating = false;
         }
+        [RelayCommand]
+        public async Task ForgotPassword() {
+            Navigating = true;
+            await Shell.Current.GoToAsync($"{nameof(ForgotEmailPage)}");
+            Navigating = false;
+        }
     }
 }

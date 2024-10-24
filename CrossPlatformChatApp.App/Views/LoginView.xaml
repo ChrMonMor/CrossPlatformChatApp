@@ -13,9 +13,9 @@
     <Grid>
         <StackLayout Margin="20">
             <StackLayout Margin="10">
-                <Label FontFamily="OpenSansRegular" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" FontSize="32" Text="Cross Platform" />
-                <Label FontFamily="OpenSansRegular" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" FontSize="32" Text="Chatapp" />
-                <Label FontFamily="OpenSansRegular" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" FontSize="16" Text="Sign in to Continue" />
+                <Label FontFamily="OpenSansRegular" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" FontSize="42" Text="Cross Platform" />
+                <Label FontFamily="OpenSansRegular" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" FontSize="42" Text="Chatapp" />
+                <Label FontFamily="OpenSansRegular" TextColor="{StaticResource PrimaryDarkText}" HorizontalOptions="Center" FontSize="24" Text="Sign in to Continue" />
             </StackLayout>
 
             <StackLayout>
@@ -39,6 +39,11 @@
             <Label FontFamily="OpenSansRegular" TextColor="{StaticResource SecondaryDarkText}" HorizontalOptions="Center" FontSize="16" Text="Or" />
             <Button Margin="0,15" BackgroundColor="{StaticResource Secondary}"
                     Text="Sign Up" TextColor="{StaticResource SecondaryDarkText}" FontFamily="OpenSansSemibold" Command="{Binding SignUpCommand}" />
+            <Label Text="Forgot Password" TextColor="Blue" TextDecorations="Underline" FontSize="10" HorizontalOptions="Center" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" NumberOfTapsRequired="1"/>
+                </Label.GestureRecognizers>
+            </Label>
             <ActivityIndicator IsRunning="{Binding Navigating}"
                                HorizontalOptions="Center"                           
                                VerticalOptions="Center"

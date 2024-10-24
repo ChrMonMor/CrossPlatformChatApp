@@ -3,11 +3,76 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CrossPlatformChatApp.App.Views.UserPage"
              xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+             xmlns:model="clr-namespace:CrossPlatformChatApp.App.Models"
              Title="UserPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid Margin="10, 20" ColumnDefinitions="*,*" RowDefinitions="auto,2*">
+        <Image Source="{Binding ImageUrl}"  Grid.Column="0" Grid.Row="0"/>
+        <VerticalStackLayout Grid.Column="0" Grid.Row="1">
+            <Button Text="+" Command="{Binding NewChatCommand}" />
+            <ScrollView>
+                <CollectionView ItemsSource="{Binding Chats}"
+                                SelectionMode="Single"
+                                ItemsLayout="VerticalGrid">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type model:ChatDto}">
+                            <Frame BorderColor="{DynamicResource Tertiary}"
+                                   BackgroundColor="{DynamicResource Tertiary}"
+                                   CornerRadius="4"
+                                   Padding="8"
+                                   Margin="8">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Name}"
+                                           HorizontalTextAlignment="Center"
+                                           TextColor="{DynamicResource White}"
+                                           FontSize="32"
+                                           FontAttributes="Bold"
+                                           TextTransform="Uppercase" />
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Column="1" Grid.Row="0">
+            <Label Text="Name:"/>
+            <Entry Text="{Binding UserDetails.Name}"/>
+            <Label Text="Email:"/>
+            <Entry Text="{Binding UserDetails.Email}"/>
+            <Label Text="Password"/>
+            <Entry IsPassword="True" Text="{Binding Password}"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Column="1" Grid.Row="1">
+            <Button Text="+" Command="{Binding AddFriendCommand}" />
+            <ScrollView>
+                <CollectionView ItemsSource="{Binding Friends}"
+                                SelectionMode="Single"
+                                ItemsLayout="VerticalGrid">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type model:UserDto}">
+                            <Frame BorderColor="{DynamicResource Tertiary}"
+                                   BackgroundColor="{DynamicResource Tertiary}"
+                                   CornerRadius="4"
+                                   Padding="8"
+                                   Margin="8">
+                                <Grid ColumnDefinitions="auto, *">
+                                    <Frame Grid.Column="0"
+                                           CornerRadius="90">
+                                        <Image Source="{Binding Image}"/>
+                                    </Frame>
+                                    <Label Grid.Column="1"
+                                           Text="{Binding Name}"
+                                           HorizontalTextAlignment="Center"
+                                           TextColor="{DynamicResource White}"
+                                           FontSize="32"
+                                           FontAttributes="Bold"
+                                           TextTransform="Uppercase" />
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>
