@@ -9,7 +9,8 @@ namespace CrossPlatformChatApp.App.Models {
         public int Id { get; set; }
         public UserDto User { get; set; }
         public string Text { get; set; }
+        public bool IsImage { get; set; }
         public DateTime Created { get; set; }
-        public DateTime Edited { get; set; }
+        public DateTime Updated { get; set; }
     }
 }

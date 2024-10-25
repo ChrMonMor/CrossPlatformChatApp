@@ -19,12 +19,18 @@
                                    CornerRadius="90">
                                 <Image Source="{Binding User.Image}"/>
                             </Frame>
-                            
-
+                            <Label Grid.Row="0" Grid.Column="1"
+                                   Text="{Binding PostedTime}"/>
+                            <Frame Grid.Row="1" Grid.Column="1">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Text}"/>
+                                    <Image Source="{Binding Text}"
+                                           IsVisible="{Binding IsImage}"/>
+                                </VerticalStackLayout>
+                            </Frame>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-                
             </CollectionView>
         </ScrollView>
         <Grid Grid.Column="2" ColumnDefinitions="auto, * , auto">
