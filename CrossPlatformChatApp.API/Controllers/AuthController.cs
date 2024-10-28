@@ -26,7 +26,5 @@ namespace CrossPlatformChatApp.API.Controllers {
             var response = await _mediator.Send(createNewUserCommand);
             return Ok(response);
         }
-
-
     }
 }

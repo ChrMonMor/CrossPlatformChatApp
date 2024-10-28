@@ -5,6 +5,8 @@ using CrossPlatformChatApp.Identity;
 using CrossPlatformChatApp.Identity.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
+using CrossPlatformChatApp.Application.Contracts;
+using CrossPlatformChatApp.API.Services;
 
 namespace CrossPlatformChatApp.API {
     public static class StartupExtentions {
@@ -13,6 +15,9 @@ namespace CrossPlatformChatApp.API {
             builder.Services.AddApplicationServices();
             builder.Services.AddPersistenceServices(builder.Configuration);
             //builder.Services.AddIdentityServices(builder.Configuration);
+
+            builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
+            builder.Services.AddHttpContextAccessor();
 
             builder.Services.AddControllers();
 
