@@ -1,5 +1,6 @@
 ﻿using CrossPlatformChatApp.Application.Contracts.Persistence;
 using CrossPlatformChatApp.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CrossPlatformChatApp.Persistence.Repositories {
     public class ChatRepository(CrossPlatformChatAppDbContext dbContext) : BaseRepository<Chat>(dbContext), IChatRepository {
@@ -11,8 +12,9 @@ namespace CrossPlatformChatApp.Persistence.Repositories {
             throw new NotImplementedException();
         }
 
-        public Task<List<Chat>> GetUsersChatsDetails(List<Guid> chats) {
-            throw new NotImplementedException();
+        public async Task<List<Chat>> GetUsersChatsDetails(List<Guid> chats) {
+            var list = await _dbContext.Set<Chat>().ToListAsync();
+            return list.Where(x => chats.Any(c => c == x.Id)).ToList();
         }
 
     }

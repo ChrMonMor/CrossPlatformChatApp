@@ -12,11 +12,14 @@ namespace CrossPlatformChatApp.Application.Profiles {
             //User Mapping
             CreateMap<User, UserByIdVm>().ReverseMap();
             CreateMap<User, UserByLoginVm>().ReverseMap();
+            CreateMap<User, UserByLoginBaseVm>().ReverseMap();
+            CreateMap<User, UserByLoginAddOnVm>().ReverseMap();
             CreateMap<User, CreateNewUserCommandVm>().ReverseMap();
             //Message Mapping
             CreateMap<Message, SendMessageCommandVm>().ReverseMap();
             //Chat Mapping
             CreateMap<Chat, CreateNewChatCommandVm>().ReverseMap();
+            CreateMap<Chat, UserByLoginAddOnVm>().ReverseMap();
         }
     }
 }

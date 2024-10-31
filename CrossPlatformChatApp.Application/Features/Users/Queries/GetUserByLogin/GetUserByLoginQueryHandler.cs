@@ -4,10 +4,12 @@ using CrossPlatformChatApp.Application.Exceptions;
 using CrossPlatformChatApp.Domain.Models;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using System.Linq;
 
 namespace CrossPlatformChatApp.Application.Features.Users.Queries.GetUserByLogin {
-    public class GetUserByLoginQueryHandler(IUserRepository userRepository, IMapper mapper, ILogger<GetUserByLoginQueryHandler> logger) : IRequestHandler<GetUserByLoginQuery, GetUserByLoginResponse> {
+    public class GetUserByLoginQueryHandler(IUserRepository userRepository, IChatRepository chatRepository, IMapper mapper, ILogger<GetUserByLoginQueryHandler> logger) : IRequestHandler<GetUserByLoginQuery, GetUserByLoginResponse> {
         private readonly IUserRepository _userRepository = userRepository;
+        private readonly IChatRepository _chatRepository = chatRepository;
         private readonly IMapper _mapper = mapper;
         private readonly ILogger<GetUserByLoginQueryHandler> _logger = logger;
 
@@ -35,7 +37,22 @@ namespace CrossPlatformChatApp.Application.Features.Users.Queries.GetUserByLogin
                     throw new NotFoundException(nameof(User), request.Email);
                 }
 
-                var userByLogin = _mapper.Map<UserByLoginVm>(getUserByLogin);
+
+                var friends = await _userRepository.GetAllFriendsDetails(getUserByLogin.Friends);
+                var chats =  await _chatRepository.GetUsersChatsDetails(getUserByLogin.Chats);
+
+                var userByLogin = new UserByLoginVm();
+
+                var friendsMap = _mapper.Map<List<UserByLoginAddOnVm>>(friends);
+                var chatsMap = _mapper.Map<List<UserByLoginAddOnVm>>(chats);
+                var userByLoginBase = _mapper.Map<UserByLoginBaseVm>(getUserByLogin);
+
+                userByLogin.Friends = friendsMap;
+                userByLogin.Chats = chatsMap;
+                userByLogin.Email = userByLoginBase.Email;
+                userByLogin.Id = userByLoginBase.Id;
+                userByLogin.Image = userByLoginBase.Image;
+                userByLogin.Name = userByLoginBase.Name;
 
                 getUserByLoginResponse.Data = userByLogin;
 

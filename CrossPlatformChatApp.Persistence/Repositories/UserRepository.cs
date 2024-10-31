@@ -17,8 +17,9 @@ namespace CrossPlatformChatApp.Persistence.Repositories {
             throw new NotImplementedException();
         }
 
-        public Task<List<User>> GetAllFriendsDetails(List<Guid> friends) {
-            throw new NotImplementedException();
+        public async Task<List<User>> GetAllFriendsDetails(List<Guid> friends) {
+            var list = await _dbContext.Set<User>().ToListAsync();
+            return list.Where(x => friends.Any(c => c == x.Id)).ToList();
         }
 
         public Task<User> GetUserByEmail(string email) {
