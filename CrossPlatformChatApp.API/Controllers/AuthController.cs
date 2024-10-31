@@ -18,6 +18,7 @@ namespace CrossPlatformChatApp.API.Controllers {
             var response = await _mediator.Send(getUserByLoginQuery);
             return Ok(response);
         }
+
         [HttpPost(Name = "SignUp")]
         [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]

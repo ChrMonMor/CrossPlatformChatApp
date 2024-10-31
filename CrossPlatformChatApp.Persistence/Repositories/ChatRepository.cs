@@ -15,6 +15,5 @@ namespace CrossPlatformChatApp.Persistence.Repositories {
             throw new NotImplementedException();
         }
 
-        get
     }
 }

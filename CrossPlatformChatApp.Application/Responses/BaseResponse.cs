@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CrossPlatformChatApp.Application.Responses {
-    public class BaseResponse<T> {
+    public class BaseResponse {
         public BaseResponse() {
             Success = true;
             Message = string.Empty;

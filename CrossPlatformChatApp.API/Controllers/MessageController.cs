@@ -7,6 +7,7 @@ namespace CrossPlatformChatApp.API.Controllers {
     [ApiController]
     public class MessageController(IMediator mediator) : ControllerBase {
         private readonly IMediator _mediator = mediator;
+
         [HttpPost(Name = "SendMessage")]
         [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
