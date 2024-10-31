@@ -14,5 +14,7 @@ namespace CrossPlatformChatApp.Persistence.Repositories {
         public Task<List<Chat>> GetUsersChatsDetails(List<Guid> chats) {
             throw new NotImplementedException();
         }
+
+        get
     }
 }

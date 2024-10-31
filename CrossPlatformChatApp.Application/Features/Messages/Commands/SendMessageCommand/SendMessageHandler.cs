@@ -1,15 +1,9 @@
-﻿using AutoMapper;
-using CrossPlatformChatApp.Application.Contracts.Persistence;
+﻿using CrossPlatformChatApp.Application.Contracts.Persistence;
 using CrossPlatformChatApp.Application.Exceptions;
-using CrossPlatformChatApp.Application.Features.Users.Commands.CreateNewUserCommand;
 using CrossPlatformChatApp.Domain.Models;
-using MediatR;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MediatR;
+using AutoMapper;
 
 namespace CrossPlatformChatApp.Application.Features.Messages.Commands.SendMessageCommand {
     public class SendMessageHandler(IMessageRepository messageRepository, IMapper mapper, ILogger<SendMessageHandler> logger) : IRequestHandler<SendMessageCommand, SendMessageCommandResponse> {

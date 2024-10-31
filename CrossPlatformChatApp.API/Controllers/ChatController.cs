@@ -1,18 +1,19 @@
-﻿using CrossPlatformChatApp.Application.Features.Messages.Commands.SendMessageCommand;
+﻿using CrossPlatformChatApp.Application.Features.Chats.Commands.CreateNewChatCommand;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CrossPlatformChatApp.API.Controllers {
     [Route("[controller]/[action]")]
     [ApiController]
-    public class MessageController(IMediator mediator) : ControllerBase {
+    public class ChatController(IMediator mediator) : ControllerBase {
         private readonly IMediator _mediator = mediator;
-        [HttpPost(Name = "SendMessage")]
+
+        [HttpPost(Name = "CreateNew")]
         [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<SendMessageCommandVm>> SendMessage([FromBody] SendMessageCommand createNewUserCommand) {
-            var response = await _mediator.Send(createNewUserCommand);
+        public async Task<ActionResult<CreateNewChatCommand>> CreateNew([FromBody] CreateNewChatCommand createNewChatCommand) {
+            var response = await _mediator.Send(createNewChatCommand);
             return Ok(response);
         }
     }

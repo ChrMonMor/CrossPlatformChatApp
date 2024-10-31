@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformChatApp.Application.Features.Chats.Commands.CreateNewChatCommand {
     public class CreateNewChatValidator : AbstractValidator<CreateNewChatCommand>  {
-        private readonly IMessageRepository _messageRepository;
-        public CreateNewChatValidator(IMessageRepository messageRepository) {
-            _messageRepository = messageRepository;
+        private readonly IChatRepository _chatRepository;
+        public CreateNewChatValidator(IChatRepository chatRepository) {
+            _chatRepository = chatRepository;
         }
     }
 }

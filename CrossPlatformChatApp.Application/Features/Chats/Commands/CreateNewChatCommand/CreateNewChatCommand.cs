@@ -10,5 +10,6 @@ namespace CrossPlatformChatApp.Application.Features.Chats.Commands.CreateNewChat
         public Guid UserId { get; set; }
         public string Title { get; set; } = string.Empty;
         public Guid? FriendId { get; set; }
+        public string? Message { get; set; }
     }
 }

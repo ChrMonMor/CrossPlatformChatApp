@@ -12,11 +12,16 @@ using System.Threading.Tasks;
 namespace CrossPlatformChatApp.Application.Profiles {
     public class MappingProfile : Profile{
         public MappingProfile() { 
+            //User Mapping
             CreateMap<User, UserByLoginVm>().ReverseMap();
             CreateMap<User, CreateNewUserCommand>().ReverseMap();
             CreateMap<User, CreateNewUserCommandVm>().ReverseMap();
+            //Message Mapping
             CreateMap<Message, SendMessageCommand>().ReverseMap();
             CreateMap<Message, SendMessageCommandVm>().ReverseMap();
+            //Chat Mapping
+            CreateMap<Chat, CreateNewUserCommand>().ReverseMap();
+            CreateMap<Chat, CreateNewUserCommandVm>().ReverseMap();
         }
     }
 }
