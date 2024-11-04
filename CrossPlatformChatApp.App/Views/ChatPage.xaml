@@ -20,7 +20,7 @@
                                 <Image Source="{Binding User.Image}"/>
                             </Frame>
                             <Label Grid.Row="0" Grid.Column="1"
-                                   Text="{Binding PostedTime}"/>
+                                   Text="{Binding }"/>
                             <Frame Grid.Row="1" Grid.Column="1">
                                 <VerticalStackLayout>
                                     <Label Text="{Binding Text}"/>

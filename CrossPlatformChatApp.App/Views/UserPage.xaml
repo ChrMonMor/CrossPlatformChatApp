@@ -4,9 +4,24 @@
              x:Class="CrossPlatformChatApp.App.Views.UserPage"
              xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              xmlns:model="clr-namespace:CrossPlatformChatApp.App.Models"
-             Title="UserPage">
-    <Grid Margin="10, 20" ColumnDefinitions="*,*" RowDefinitions="auto,2*">
-        <Image Source="{Binding ImageUrl}"  Grid.Column="0" Grid.Row="0"/>
+             Title="UserPage"
+             Background="{StaticResource Primary}">
+    <Grid Margin="10, 20" 
+          ColumnDefinitions="*,*" 
+          RowDefinitions="auto,2*"
+          ColumnSpacing="6"
+          RowSpacing="6">
+        <Frame Margin="10"
+               BorderColor="{DynamicResource Tertiary}"
+               BackgroundColor="{DynamicResource Tertiary}"
+               CornerRadius="900"
+               HeightRequest="175"
+               WidthRequest="175"
+               IsClippedToBounds="True"
+               HorizontalOptions="Center"
+               VerticalOptions="Center">
+            <Image Source="{Binding ImageUrl}"  Grid.Column="0" Grid.Row="0"/>
+        </Frame>
         <VerticalStackLayout Grid.Column="0" Grid.Row="1">
             <Button Text="+" Command="{Binding NewChatCommand}" />
             <ScrollView>
@@ -36,11 +51,23 @@
         </VerticalStackLayout>
         <VerticalStackLayout Grid.Column="1" Grid.Row="0">
             <Label Text="Name:"/>
-            <Entry Text="{Binding UserDetails.Name}"/>
+            <Grid Margin="0,5">
+                <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5" />
+                <Entry BackgroundColor="Transparent" Placeholder="Enter Password" TextColor="Black" Margin="5,0"
+                           PlaceholderColor="LightGray" Text="{Binding UserDetails.Name}" />
+            </Grid>
             <Label Text="Email:"/>
-            <Entry Text="{Binding UserDetails.Email}"/>
+            <Grid Margin="0,5">
+                <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5" />
+                <Entry BackgroundColor="Transparent" Placeholder="Enter Password" TextColor="Black" Margin="5,0"
+                           PlaceholderColor="LightGray" Text="{Binding UserDetails.Email}" />
+            </Grid>
             <Label Text="Password"/>
-            <Entry IsPassword="True" Text="{Binding Password}"/>
+            <Grid Margin="0,5">
+                <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5" />
+                <Entry BackgroundColor="Transparent" Placeholder="Enter Password" TextColor="Black" Margin="5,0"
+                           PlaceholderColor="LightGray" IsPassword="True" Text="{Binding UserDetails.Password}" />
+            </Grid>
         </VerticalStackLayout>
         <VerticalStackLayout Grid.Column="1" Grid.Row="1">
             <Button Text="+" Command="{Binding AddFriendCommand}" />
@@ -57,7 +84,14 @@
                                    Margin="8">
                                 <Grid ColumnDefinitions="auto, *">
                                     <Frame Grid.Column="0"
-                                           CornerRadius="90">
+                                           BorderColor="{DynamicResource Tertiary}"
+                                           BackgroundColor="{DynamicResource Tertiary}"
+                                           CornerRadius="90"
+                                           HeightRequest="90"
+                                           WidthRequest="90"
+                                           IsClippedToBounds="True"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center">
                                         <Image Source="{Binding Image}"/>
                                     </Frame>
                                     <Label Grid.Column="1"

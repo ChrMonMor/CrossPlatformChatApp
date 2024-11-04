@@ -4,5 +4,8 @@ namespace CrossPlatformChatApp.App.ViewModels
 {
     public partial class ChatViewModel : ObservableObject {
 
+        public ChatViewModel() {
+
+        }
     }
 }

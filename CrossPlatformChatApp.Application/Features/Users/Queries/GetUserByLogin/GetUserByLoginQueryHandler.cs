@@ -43,8 +43,8 @@ namespace CrossPlatformChatApp.Application.Features.Users.Queries.GetUserByLogin
 
                 var userByLogin = new UserByLoginVm();
 
-                var friendsMap = _mapper.Map<List<UserByLoginAddOnVm>>(friends);
-                var chatsMap = _mapper.Map<List<UserByLoginAddOnVm>>(chats);
+                var friendsMap = _mapper.Map<List<UserByLoginAddOnFriendVm>>(friends);
+                var chatsMap = _mapper.Map<List<UserByLoginAddOnChatVm>>(chats);
                 var userByLoginBase = _mapper.Map<UserByLoginBaseVm>(getUserByLogin);
 
                 userByLogin.Friends = friendsMap;

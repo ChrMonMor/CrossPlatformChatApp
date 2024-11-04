@@ -35,7 +35,9 @@ namespace CrossPlatformChatApp.App.ViewModels {
                 Navigating = false;
                 return;
             }
-            await Shell.Current.GoToAsync($"{nameof(UserPage)}?Username={user.Name}");
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(user);
+
+            await Shell.Current.GoToAsync($"{nameof(UserPage)}?User={json}");
                 
             Navigating = false;
         }

@@ -3,20 +3,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CrossPlatformChatApp.App.Views.SignUpPage"
              xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
-             Title="SignUpPage">
-    <VerticalStackLayout>
-        <Frame CornerRadius="90">
-            <Image Source="{Binding ImageSource}"/>
+             Title="SignUpPage"
+             BackgroundColor="{StaticResource Primary}">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource Secondary}" />
+    </ContentPage.Behaviors>
+    <VerticalStackLayout Margin="20">
+        <Frame Margin="10"
+               BorderColor="Black"
+               CornerRadius="900"
+               HeightRequest="120"
+               WidthRequest="120"
+               IsClippedToBounds="True"
+               HorizontalOptions="Center"
+               VerticalOptions="Center">
+            <Image Source="{Binding ImageSource}"
+                   Aspect="AspectFill"
+                   Margin="-20"
+                   HeightRequest="120"
+                   WidthRequest="120"/>
         </Frame>
-        <Label Text="Email*"/>
-        <Entry Text="{Binding Email}"/>
-        <Label Text="Password*"/>
-        <Entry Text="{Binding Password}"
-               IsPassword="True"/>
-        <Label Text="Repeat Password*"/>
-        <Entry Text="{Binding RepeatPassword}"
-               IsPassword="True"/>
+        <Label TextColor="{StaticResource PrimaryDarkText}" FontSize="16" Text="Email*"/>
+        <Grid Margin="0,5">
+            <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5" />
+            <Entry BackgroundColor="Transparent" Placeholder="Enter Password" TextColor="Black" Margin="5,0"
+           PlaceholderColor="LightGray" IsPassword="False" Text="{Binding Email}" />
+        </Grid>
+        <Label TextColor="{StaticResource PrimaryDarkText}" FontSize="16" Text="Password*"/>
+        <Grid Margin="0,5">
+            <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5" />
+            <Entry BackgroundColor="Transparent" Placeholder="Enter Password" TextColor="Black" Margin="5,0"
+           PlaceholderColor="LightGray" IsPassword="True" Text="{Binding Password}" />
+        </Grid>
+        <Label TextColor="{StaticResource PrimaryDarkText}" FontSize="16" Text="Repeat Password*"/>
+        <Grid Margin="0,5">
+            <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5" />
+            <Entry BackgroundColor="Transparent" Placeholder="Repeat Password" TextColor="Black" Margin="5,0"
+           PlaceholderColor="LightGray" IsPassword="True" Text="{Binding RepeatPassword}" />
+        </Grid>
         <Button Text="Submit"
+                Margin="0,15" 
+                BackgroundColor="{StaticResource Secondary}"
+                TextColor="{StaticResource SecondaryDarkText}" 
                 Command="{Binding SignUpCommand}"/>
     </VerticalStackLayout>
 </ContentPage>

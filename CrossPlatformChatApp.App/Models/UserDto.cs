@@ -10,7 +10,7 @@ namespace CrossPlatformChatApp.App.Models {
         public string Name { get; set; }
         public string Email { get; set; }
         public string Image { get; set; }
-        public List<Guid> Friends { get; set; }
-        public List<Guid> Chats { get; set; }
+        public List<FriendDto> Friends { get; set; }
+        public List<ChatDto> Chats { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CrossPlatformChatApp.Application.Features.Chats.Commands.CreateNewChatCommand;
+using CrossPlatformChatApp.Application.Features.Chats.Queries.GetAllChats;
 using CrossPlatformChatApp.Application.Features.Messages.Commands.SendMessageCommand;
 using CrossPlatformChatApp.Application.Features.Users.Commands.CreateNewUserCommand;
 using CrossPlatformChatApp.Application.Features.Users.Queries.GetUserById;
@@ -13,13 +14,15 @@ namespace CrossPlatformChatApp.Application.Profiles {
             CreateMap<User, UserByIdVm>().ReverseMap();
             CreateMap<User, UserByLoginVm>().ReverseMap();
             CreateMap<User, UserByLoginBaseVm>().ReverseMap();
-            CreateMap<User, UserByLoginAddOnVm>().ReverseMap();
+            CreateMap<User, UserByLoginAddOnFriendVm>().ReverseMap();
             CreateMap<User, CreateNewUserCommandVm>().ReverseMap();
             //Message Mapping
             CreateMap<Message, SendMessageCommandVm>().ReverseMap();
             //Chat Mapping
             CreateMap<Chat, CreateNewChatCommandVm>().ReverseMap();
-            CreateMap<Chat, UserByLoginAddOnVm>().ReverseMap();
+            CreateMap<Chat, UserByLoginAddOnChatVm>().ReverseMap();
+            CreateMap<Chat, GetAllChatsVm>().ReverseMap();
+
         }
     }
 }

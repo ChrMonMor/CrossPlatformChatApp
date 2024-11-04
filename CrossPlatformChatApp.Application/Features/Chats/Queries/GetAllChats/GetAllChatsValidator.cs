@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CrossPlatformChatApp.Application.Features.Chats.Queries.GetAllChats {
-    public class GetAllChatsValidator : AbstractValidator<GetUserByIdQuery> {
+    public class GetAllChatsValidator : AbstractValidator<GetAllChatsQuery> {
         private readonly IChatRepository _chatRepository;
 
         public GetAllChatsValidator(IChatRepository chatRepository) {
