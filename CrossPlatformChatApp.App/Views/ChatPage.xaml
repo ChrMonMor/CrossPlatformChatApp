@@ -34,7 +34,19 @@
             </CollectionView>
         </ScrollView>
         <Grid Grid.Column="2" ColumnDefinitions="auto, * , auto">
-            
+            <Frame Grid.Column="0">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding UploadImageCommand}"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Add Image"/>
+            </Frame>
+            <Entry Grid.Column="1" />
+            <Frame Grid.Column="2">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SendMessageCommand}"/>
+                </Frame.GestureRecognizers>
+                <Label Text="SendMessage"/>
+            </Frame>
         </Grid>
     </Grid>
 </ContentPage>
