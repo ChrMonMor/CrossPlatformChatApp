@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CrossPlatformChatApp.App.Data.Interfaces;
 using CrossPlatformChatApp.App.Models;
+using CrossPlatformChatApp.App.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -46,9 +48,9 @@ namespace CrossPlatformChatApp.App.ViewModels {
             Navigation = false;
         }
         [RelayCommand]
-        public async Task OpenChat(Guid id) {
+        public async Task OpenChat(Guid ChatId) {
             Navigation = true;
-
+            await Shell.Current.GoToAsync($"{nameof(ChatPage)}", new Dictionary<string, object> { { "ChatId", ChatId } });
             Navigation = false;
         }
     }

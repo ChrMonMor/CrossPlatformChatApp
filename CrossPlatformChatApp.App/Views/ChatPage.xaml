@@ -7,17 +7,17 @@
              Title="ChatPage">
     <Grid RowDefinitions="auto, * ,auto">
         <Frame Grid.Row="0">
-            <Label Text="{Binding ChatName}"/>
+            <Label Text="{Binding ChatDetails.Name}"/>
         </Frame>
         <ScrollView Grid.Row="1">
-            <CollectionView ItemsSource="{Binding Messages}">
+            <CollectionView ItemsSource="{Binding ChatDetails.Messages}">
                 <CollectionView.ItemTemplate >
                     <DataTemplate x:DataType="{x:Type models:MessageDto}">
                         <Grid ColumnDefinitions="auto, *" RowDefinitions="auto, *">
                             <Frame Grid.Row="0" Grid.RowSpan="2"
                                    Grid.Column="0"
                                    CornerRadius="90">
-                                <Image Source="{Binding User.Image}"/>
+                                <Image Source="{Binding UserImage}"/>
                             </Frame>
                             <Label Grid.Row="0" Grid.Column="1"
                                    Text="{Binding }"/>

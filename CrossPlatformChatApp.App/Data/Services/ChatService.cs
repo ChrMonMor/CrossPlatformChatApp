@@ -38,7 +38,8 @@ namespace CrossPlatformChatApp.App.Data.Services {
             }
 
             try {
-                var serializedObject = JsonConvert.SerializeObject(new { id });
+                int count = 1;
+                var serializedObject = JsonConvert.SerializeObject(new { id, count });
                 var request = new HttpRequestMessage(HttpMethod.Post, "authenticate") {
                     Content = new StringContent(serializedObject, Encoding.UTF8, "application/json")
                 };

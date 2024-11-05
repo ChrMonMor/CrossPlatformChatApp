@@ -52,7 +52,10 @@ namespace CrossPlatformChatApp.Application.Features.Chats.Queries.GetChatById {
 
                 List<GetChatByIdAddOnMessage> getChatByIdAddOnMessages = [];
                 foreach (var message in getChatById.Messages) {
-                    var user = getUsers.Where(x => x.Id == message.UserId).Single();
+                    var user = new User();
+                    if (!getUsers.Any(x => x.Id == message.UserId)) {
+                        user = getUsers.Where(x => x.Id == message.UserId).Single();
+                    }
                     getChatByIdAddOnMessages.Add(new GetChatByIdAddOnMessage() {
                         Id = message.Id,
                         UserId = message.UserId,

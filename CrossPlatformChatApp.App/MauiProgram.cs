@@ -18,6 +18,7 @@ namespace CrossPlatformChatApp.App {
                 });
 
             builder.Services.AddSingleton<IAuthService, AuthService>();
+            builder.Services.AddSingleton<IChatService, ChatService>();
 
             builder.Services.AddSingleton<LoginView>();
             builder.Services.AddSingleton<LoginViewModel>();
