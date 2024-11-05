@@ -1,5 +1,6 @@
 ﻿using CrossPlatformChatApp.Application.Features.Chats.Commands.CreateNewChatCommand;
 using CrossPlatformChatApp.Application.Features.Chats.Queries.GetAllChats;
+using CrossPlatformChatApp.Application.Features.Chats.Queries.GetChatById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +22,12 @@ namespace CrossPlatformChatApp.API.Controllers {
         [ProducesDefaultResponseType]
         public async Task<ActionResult<GetAllChatsVm>> GetAll() {
             var respone = await _mediator.Send(new GetAllChatsQuery());
+            return Ok(respone);
+        }
+        [HttpPost(Name = "GetById")]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult<GetChatByIdVm>> GetById([FromBody] GetChatByIdQuery getChatByIdQuery) {
+            var respone = await _mediator.Send(getChatByIdQuery);
             return Ok(respone);
         }
     }

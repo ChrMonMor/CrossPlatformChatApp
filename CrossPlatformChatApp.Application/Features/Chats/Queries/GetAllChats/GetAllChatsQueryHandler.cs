@@ -37,7 +37,7 @@ namespace CrossPlatformChatApp.Application.Features.Chats.Queries.GetAllChats {
                     throw new NotFoundException(nameof(Chat), request);
                 }
 
-                var allChats = _mapper.Map <List<GetAllChatsVm>>(getAllChats);
+                var allChats = _mapper.Map<List<GetAllChatsVm>>(getAllChats);
 
                 getAllChatsResponse.Data = allChats;
 
