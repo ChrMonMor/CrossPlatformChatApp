@@ -53,7 +53,7 @@ namespace CrossPlatformChatApp.Application.Features.Chats.Queries.GetChatById {
                 List<GetChatByIdAddOnMessage> getChatByIdAddOnMessages = [];
                 foreach (var message in getChatById.Messages) {
                     var user = new User();
-                    if (!getUsers.Any(x => x.Id == message.UserId)) {
+                    if (getUsers.Any(x => x.Id == message.UserId)) {
                         user = getUsers.Where(x => x.Id == message.UserId).Single();
                     }
                     getChatByIdAddOnMessages.Add(new GetChatByIdAddOnMessage() {
@@ -74,7 +74,7 @@ namespace CrossPlatformChatApp.Application.Features.Chats.Queries.GetChatById {
 
             } catch (Exception ex) {
 
-                string message = $"Attempt to fetch chats - {ex.Message}";
+                string message = $"Attempt to fetch chat {request.Id} - {ex.Message}";
                 _logger.LogError(message);
 
             }

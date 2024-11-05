@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Maui.Core.Extensions;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CrossPlatformChatApp.App.Data.Interfaces;
@@ -24,9 +26,11 @@ namespace CrossPlatformChatApp.App.ViewModels {
         bool _navigation;
 
         private readonly Task _initTask;
+        private readonly IChatService _chatService;
 
-        public UserViewModel() {
+        public UserViewModel(IChatService chatService) {
             _initTask = ActiveInitAsync();
+            _chatService = chatService;
         }
         private async Task InitAsync() {
         }
@@ -50,7 +54,19 @@ namespace CrossPlatformChatApp.App.ViewModels {
         [RelayCommand]
         public async Task OpenChat(Guid ChatId) {
             Navigation = true;
-            await Shell.Current.GoToAsync($"{nameof(ChatPage)}", new Dictionary<string, object> { { "ChatId", ChatId } });
+
+            ChatDto chat = await _chatService.GetChatDto(ChatId);
+
+            if (chat == null) {
+                CancellationTokenSource cancellationTokenSource = new();
+                var toast = Toast.Make("Something went wrong", ToastDuration.Short, 14);
+                await toast.Show(cancellationTokenSource.Token);
+
+                Navigation = false;
+                return;
+            }
+
+            await Shell.Current.GoToAsync($"{nameof(ChatPage)}", new Dictionary<string, object> { { "Chat", chat } });
             Navigation = false;
         }
     }

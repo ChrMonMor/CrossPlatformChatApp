@@ -4,13 +4,11 @@ using CrossPlatformChatApp.App.Models;
 
 namespace CrossPlatformChatApp.App.ViewModels
 {
-    [QueryProperty(nameof(ChatId), "ChatId")]
+    [QueryProperty(nameof(Chat), "Chat")]
     public partial class ChatViewModel : ObservableObject {
 
         [ObservableProperty]
-        Guid _chatId;
-        [ObservableProperty]
-        ChatDto _chatDetails;
+        ChatDto _chat;
         [ObservableProperty]
         bool _navigation;
 
@@ -20,13 +18,11 @@ namespace CrossPlatformChatApp.App.ViewModels
         public ChatViewModel(IChatService chatService) {
             Navigation = true;
             _chatService = chatService;
-            _chatDetails = new ChatDto();
             _initTask = ActiveInitAsync();
             Navigation = false;
         }
         private async Task InitAsync() { 
-            var chatDetails = await _chatService.GetChatDto(ChatId);
-            ChatDetails = chatDetails;
+
         }
 
         public async Task ActiveInitAsync() {
