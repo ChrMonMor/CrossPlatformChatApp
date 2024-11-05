@@ -35,9 +35,8 @@ namespace CrossPlatformChatApp.App.ViewModels {
                 Navigating = false;
                 return;
             }
-            var json = Newtonsoft.Json.JsonConvert.SerializeObject(user);
 
-            await Shell.Current.GoToAsync($"{nameof(UserPage)}?User={json}");
+            await Shell.Current.GoToAsync($"{nameof(UserPage)}",new Dictionary<string, object>{ { "User", user } });
                 
             Navigating = false;
         }

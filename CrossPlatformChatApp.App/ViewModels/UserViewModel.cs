@@ -10,32 +10,23 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CrossPlatformChatApp.App.ViewModels {
-    [QueryProperty(nameof(UserDto), "User")]
+    [QueryProperty(nameof(User), "User")]
     public partial class UserViewModel : ObservableObject {
         [ObservableProperty]
-        string _user;
-        [ObservableProperty]
-        UserDto _userDetails;
+        UserDto _user;
         [ObservableProperty]
         string _imageUrl;
         [ObservableProperty]
-        ObservableCollection<ChatDto> _chats;
-        [ObservableProperty]
-        ObservableCollection<FriendDto> _friends;
-        [ObservableProperty]
         string _password;
+        [ObservableProperty]
+        bool _navigation;
 
-        private readonly Task initTask;
+        private readonly Task _initTask;
 
         public UserViewModel() {
-            _friends = [];
-            _chats = [];
-            initTask = ActiveInitAsync();
+            _initTask = ActiveInitAsync();
         }
         private async Task InitAsync() {
-            UserDetails = Newtonsoft.Json.JsonConvert.DeserializeObject<UserDto>(User);
-            Chats = UserDetails.Chats.ToObservableCollection();
-            Friends = UserDetails.Friends.ToObservableCollection();
         }
 
         public async Task ActiveInitAsync() {
@@ -44,11 +35,21 @@ namespace CrossPlatformChatApp.App.ViewModels {
 
         [RelayCommand]
         public async Task NewChat() {
+            Navigation = true;
 
+            Navigation = false;
         }
         [RelayCommand]
         public async Task AddFriend() {
+            Navigation = true;
 
+            Navigation = false;
+        }
+        [RelayCommand]
+        public async Task OpenChat(Guid id) {
+            Navigation = true;
+
+            Navigation = false;
         }
     }
 }
