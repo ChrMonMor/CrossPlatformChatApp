@@ -60,5 +60,29 @@ namespace CrossPlatformChatApp.App.Data.Services {
                 return null;
             }
         }
+
+        public async Task<ChatDto> SendMessage(SendMessageDto message) {
+            if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet) {
+                Debug.WriteLine("No Internet Access");
+                return null;
+            }
+
+            try {
+                var serializedObject = JsonConvert.SerializeObject(new { message.Sender, message.ChatId, message.Message, message.IsImage });
+                var request = new HttpRequestMessage(HttpMethod.Post, "authenticate") {
+                    Content = new StringContent(serializedObject, Encoding.UTF8, "application/json")
+                };
+                HttpResponseMessage response = await _httpClient.PostAsync($"{_url}/Message/SendMessage", request.Content);
+                if (response.IsSuccessStatusCode) {
+                    var newCall = await GetChatDto(message.ChatId);
+
+                    return newCall;
+                }
+                return null;
+            } catch (Exception ex) {
+                Debug.WriteLine($"Error: {ex.Message}");
+                return null;
+            }
+        }
     }
 }

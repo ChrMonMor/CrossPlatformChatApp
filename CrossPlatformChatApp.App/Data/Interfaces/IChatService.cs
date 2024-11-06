@@ -8,5 +8,6 @@ using System.Threading.Tasks;
 namespace CrossPlatformChatApp.App.Data.Interfaces {
     public interface IChatService {
         Task<ChatDto> GetChatDto(Guid id);
+        Task<ChatDto> SendMessage(SendMessageDto message);
     }
 }

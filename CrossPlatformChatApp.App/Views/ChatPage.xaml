@@ -7,10 +7,10 @@
              Title="ChatPage">
     <Grid RowDefinitions="auto, * ,auto">
         <Frame Grid.Row="0">
-            <Label Text="{Binding Chat.Name}"/>
+            <Label Text="{Binding UserChat.Chat.Name}"/>
         </Frame>
         <ScrollView Grid.Row="1">
-            <CollectionView ItemsSource="{Binding Chat.Messages}">
+            <CollectionView ItemsSource="{Binding Messages}">
                 <CollectionView.ItemTemplate >
                     <DataTemplate x:DataType="{x:Type models:MessageDto}">
                         <Grid ColumnDefinitions="auto, *" RowDefinitions="auto, *">
@@ -33,19 +33,21 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </ScrollView>
-        <Grid Grid.Column="2" ColumnDefinitions="auto, * , auto">
+        <Grid Grid.Row="2" ColumnDefinitions="auto, * , auto">
             <Frame Grid.Column="0">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding UploadImageCommand}"/>
                 </Frame.GestureRecognizers>
                 <Label Text="Add Image"/>
             </Frame>
-            <Entry Grid.Column="1" />
+            <Entry Grid.Column="1"
+                   BackgroundColor="Transparent" Placeholder="Enter E-Mail" TextColor="Black" Margin="5,0"
+                   PlaceholderColor="LightGray" Text="{Binding MessageText}" />
             <Frame Grid.Column="2">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding SendMessageCommand}"/>
                 </Frame.GestureRecognizers>
-                <Label Text="SendMessage"/>
+                <Label Text="Send Message"/>
             </Frame>
         </Grid>
     </Grid>

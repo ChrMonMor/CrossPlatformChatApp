@@ -66,7 +66,9 @@ namespace CrossPlatformChatApp.App.ViewModels {
                 return;
             }
 
-            await Shell.Current.GoToAsync($"{nameof(ChatPage)}", new Dictionary<string, object> { { "Chat", chat } });
+            UserChatDto userChat = new() { User = User, Chat = chat };
+
+            await Shell.Current.GoToAsync($"{nameof(ChatPage)}", new Dictionary<string, object> { { "UserChat", userChat } });
             Navigation = false;
         }
     }
